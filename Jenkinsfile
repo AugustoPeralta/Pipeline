@@ -1,12 +1,19 @@
 node {
-  stage('SCM') {
-    git 'https://github.com/AugustoPeralta/game-of-life.git'
+  
+  stage('Configure') {
+    env.PATH = "${tool 'maven 3'}/bin:${env.PATH}"
   }
-  stage('SonarQube analysis') {
-    // requires SonarQube Scanner 2.8+
-    def scannerHome = tool 'Sonarscanner';
-    withSonarQubeEnv('SonarQube') {
-      sh "${scannerHome}/bin/sonar-scanner"
-    }
+
+  stage('Checkout') {
+    git 'https://github.com/bertjan/spring-boot-sample'
   }
+
+  stage('Build') {
+    sh 'mvn -B -V -U -e clean package'
+  }
+
+  stage('Archive') {
+    junit allowEmptyResults: true, testResults: '**/target/**/TEST*.xml'
+  }
+
 }
