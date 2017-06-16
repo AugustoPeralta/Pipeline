@@ -18,7 +18,7 @@ node {
   }
   
   stage('Publish') {
-     nexusPublisher nexusInstanceId: 'nexuspipeline', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'target/spring-boot-sample.jar']], mavenCoordinate: [artifactId: 'spring-boot-sample', groupId: 'nl.revolution', packaging: 'jar', version: '0.0.1-SNAPSHOT']]]
+     nexusPublisher nexusInstanceId: 'nexuspipeline', nexusRepositoryId: 'thirdparty', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'target/spring-boot-sample.jar']], mavenCoordinate: [artifactId: 'spring-boot-sample', groupId: 'nl.revolution', packaging: 'jar', version: '0.0.1-SNAPSHOT']]]
   } 
   
 }
