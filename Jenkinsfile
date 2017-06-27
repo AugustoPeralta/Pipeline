@@ -18,6 +18,6 @@ node {
   }
   
   stage('Nexus Deploy') {
-    nexusPublisher nexusInstanceId: 'nexuspipeline', nexusRepositoryId: 'thirdparty', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '~/workspace/GameOfLifePipeline_master-YRW7MBWKGVMZJOYMZ7VOH4DPLIT5PDXRNTWQB4WKIVFNSVHN7VBQ/target/spring-boot-sample.jar']], mavenCoordinate: [artifactId: 'spring-boot-sample', groupId: 'nl.revolution', packaging: 'jar', version: '0.0.1-SNAPSHOT']]]
+    nexusPublisher nexusInstanceId: 'nexuspipeline', nexusRepositoryId: 'thirdparty', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '/var/jenkins_home/workspace/GameOfLifePipeline_master-YRW7MBWKGVMZJOYMZ7VOH4DPLIT5PDXRNTWQB4WKIVFNSVHN7VBQ/target/spring-boot-sample.jar']], mavenCoordinate: [artifactId: 'spring-boot-sample', groupId: 'nl.revolution', packaging: 'jar', version: '0.0.1-SNAPSHOT']]]
     }
 }
