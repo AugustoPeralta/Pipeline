@@ -18,17 +18,6 @@ node {
   }
   
   stage('Nexus Deploy') {
-     nexusArtifactUploader
-        artifactId: 'spring-boot-sample',
-        file: '~/workspace/GameOfLifePipeline_master-YRW7MBWKGVMZJOYMZ7VOH4DPLIT5PDXRNTWQB4WKIVFNSVHN7VBQ/target/spring-boot-sample.jar',
-        groupId: 'nl.revolution',
-        type:'jar',
-        nexusPassword: 'admin123',
-        nexusUrl: 'http://192.168.1.24:30333/nexus',
-        nexusUser: 'admin',
-        nexusVersion: 'nexus 2.14.4-03',
-        protocol: 'http',
-        repository: 'maven-snapshots',
-        version: '0.0.1-SNAPSHOT' 
+    nexusPublisher nexusInstanceId: 'nexuspipeline', nexusRepositoryId: 'thirdparty', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '~/workspace/GameOfLifePipeline_master-YRW7MBWKGVMZJOYMZ7VOH4DPLIT5PDXRNTWQB4WKIVFNSVHN7VBQ/target/spring-boot-sample.jar']], mavenCoordinate: [artifactId: 'spring-boot-sample', groupId: 'nl.revolution', packaging: 'jar', version: '0.0.1-SNAPSHOT']]]
     }
 }
