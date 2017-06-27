@@ -5,7 +5,7 @@ node {
   }
 
   stage('Checkout') {
-    git 'https://github.com/bertjan/spring-boot-sample'
+    git 'https://github.com/AugustoPeralta/spring-boot.git'
   }
 
   stage('Build') {
