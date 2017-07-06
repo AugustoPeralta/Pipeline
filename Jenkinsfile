@@ -17,6 +17,6 @@ node {
     archive 'target/*.jar'
   }
   
-  nexusPublisher nexusInstanceId: 'nexuspipeline', nexusRepositoryId: 'Lab-Repository-Release', packages: []
+  nexusPublisher nexusInstanceId: 'nexuspipeline', nexusRepositoryId: 'Lab-Repository-Release', packages: [[$class: 'MavenPackage', mavenAssetList: [], mavenCoordinate: [artifactId: 'spring-boot-sample', groupId: 'nl.revolution', packaging: 'jar', version: '0.0.1-SNAPSHOT']]]
    
 }
