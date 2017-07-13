@@ -17,6 +17,10 @@ node {
     archive 'target/*.jar'
   }
   
-  nexusPublisher nexusInstanceId: 'nexuspipeline', nexusRepositoryId: 'Lab-Repository-Release', packages: [[$class: 'MavenPackage', mavenAssetList: [], mavenCoordinate: [artifactId: 'spring-boot-sample', groupId: 'nl.revolution', packaging: 'jar', version: '0.0.1-SNAPSHOT']]]
+  stage('SonarQube analysis') {
+    withSonarQubeEnv('SonarQube') {
+      // requires SonarQube Scanner for Maven 3.2+
+      sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.3.0.603:sonar'
+    } 
    
 }
